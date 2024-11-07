@@ -5,12 +5,12 @@ import info
 
 version = info.version
 
-def doLab2():
+def doLab2(return_type):
     print('lab1.2')
     resp = requests.get('https://api.vk.com/method/groups.getMembers',
                         params={
                             'access_token': info.service_key,
-                            'count': 500,
+                            'count': 50,
                             'group_id': 'tomsk123',
                             'sort': 'id_asc',
                             'v': version
@@ -33,14 +33,14 @@ def doLab2():
                                 'name_case': 'nom',
                                 'v': version,
                             })
-        return_list.append(resp.json()['response'][0])
-        print(resp.json()['response'][0])
         if resp.json()['response'][0]['is_closed'] or 'deactivated' in resp.json()['response'][0].keys():
             member_count -= 1
             continue
+        return_list.append(resp.json()['response'][0])
+        print(resp.json()['response'][0])
         if not resp.json()['response'][0].get('bdate'):
             age = 0
-        elif len(resp.json()['response'][0]['bdate']) != 10:
+        elif len(resp.json()['response'][0]['bdate']) != 9 and len(resp.json()['response'][0]['bdate']) != 10:
             age = 0
         else:
             age = 2024 - int(resp.json()['response'][0]['bdate'][-4:])
@@ -67,6 +67,7 @@ def doLab2():
             else:
                 city_dict['NA'] = 1
 
+    print(len([age for age in age_list if age != 0]))
     average_age = sum(age for age in age_list if age != 0) / len([age for age in age_list if age != 0])
     median_age = median([age for age in age_list if age != 0])
     unknown_age = len([age for age in age_list if age == 0]) / member_count * 100
@@ -85,7 +86,12 @@ def doLab2():
     for key, value in sorted(city_dict.items(), key=lambda x: x[1], reverse=True):
         print("{} : {}".format(key, value))
 
-    return return_list
+    if return_type == 'users':
+        return return_list
+    elif return_type == 'cities':
+        return city_dict
+    else:
+        return (return_list, city_dict)
 
 
 
