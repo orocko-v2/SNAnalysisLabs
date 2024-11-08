@@ -6,6 +6,9 @@
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
             <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
             
+                <link href="lib/tom-select/tom-select.css" rel="stylesheet">
+                <script src="lib/tom-select/tom-select.complete.min.js"></script>
+            
         
 <center>
 <h1></h1>
@@ -58,6 +61,76 @@
     <body>
         <div class="card" style="width: 100%">
             
+                <div id="select-menu" class="card-header">
+                    <div class="row no-gutters">
+                        <div class="col-10 pb-2">
+                            <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="selectNode([value]);"
+                            id="select-node"
+                            placeholder="Select node..."
+                            >
+                                <option selected>Select a Node by ID</option>
+                                
+                                    <option value="1">1</option>
+                                
+                                    <option value="2">2</option>
+                                
+                                    <option value="3">3</option>
+                                
+                                    <option value="4">4</option>
+                                
+                                    <option value="5">5</option>
+                                
+                                    <option value="6">6</option>
+                                
+                                    <option value="7">7</option>
+                                
+                                    <option value="8">8</option>
+                                
+                                    <option value="9">9</option>
+                                
+                                    <option value="10">10</option>
+                                
+                                    <option value="11">11</option>
+                                
+                                    <option value="12">12</option>
+                                
+                                    <option value="13">13</option>
+                                
+                                    <option value="14">14</option>
+                                
+                                    <option value="15">15</option>
+                                
+                                    <option value="16">16</option>
+                                
+                                    <option value="17">17</option>
+                                
+                                    <option value="18">18</option>
+                                
+                                    <option value="19">19</option>
+                                
+                                    <option value="20">20</option>
+                                
+                                    <option value="21">21</option>
+                                
+                                    <option value="22">22</option>
+                                
+                                    <option value="23">23</option>
+                                
+                                    <option value="24">24</option>
+                                
+                                    <option value="25">25</option>
+                                
+                            </select>
+                        </div>
+                        <div class="col-2 pb-2">
+                            <button type="button" class="btn btn-primary btn-block" onclick="neighbourhoodHighlight({nodes: []});">Reset Selection</button>
+                        </div>
+                    </div>
+                </div>
+            
             
             <div id="mynetwork" class="card-body"></div>
         </div>
@@ -86,6 +159,14 @@
               };
 
               
+                  new TomSelect("#select-node",{
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      }
+                  });
+              
 
               
 
@@ -96,8 +177,8 @@
                   
 
                   // parsing and collecting nodes and edges from the python
-                  nodes = new vis.DataSet([{"color": "#0c33de", "id": 1, "label": "Tomsk", "shape": "box", "title": "Tomsk"}, {"color": "#a92855", "id": 2, "label": "Moscow", "shape": "box", "title": "Moscow"}, {"color": "#f7e1d2", "id": 3, "label": "Seversk", "shape": "box", "title": "Seversk"}, {"color": "#09c0da", "id": 4, "label": "Saint Petersburg", "shape": "box", "title": "Saint Petersburg"}, {"color": "#f77664", "id": 5, "label": "Birmingham", "shape": "box", "title": "Birmingham"}, {"color": "#477f83", "id": 6, "label": "Novosibirsk", "shape": "box", "title": "Novosibirsk"}, {"color": "#6d9826", "id": 7, "label": "Omsk", "shape": "box", "title": "Omsk"}, {"color": "#4169E1", "id": 4041, "label": "Maxim", "shape": "dot", "title": "Maxim Mernes"}, {"color": "#4169E1", "id": 9699, "label": "Maxim", "shape": "dot", "title": "Maxim Mernes"}, {"color": "#FFB6C1", "id": 15598, "label": "Maria", "shape": "dot", "title": "Maria Kuptsova"}, {"color": "#4169E1", "id": 24460, "label": "Konstantin", "shape": "dot", "title": "Konstantin Semenov"}, {"color": "#4169E1", "id": 25887, "label": "Denis", "shape": "dot", "title": "Denis Matyskin"}, {"color": "#FFB6C1", "id": 29432, "label": "Ulyana", "shape": "dot", "title": "Ulyana Mernes"}, {"color": "#4169E1", "id": 33977, "label": "Dmitry", "shape": "dot", "title": "Dmitry Sinelnik"}, {"color": "#FFB6C1", "id": 35578, "label": "Katya", "shape": "dot", "title": "Katya Solovyeva"}, {"color": "#FFB6C1", "id": 45557, "label": "Valeria", "shape": "dot", "title": "Valeria Lapenko"}, {"color": "#4169E1", "id": 62642, "label": "Artem", "shape": "dot", "title": "Artem Afanasyev"}, {"color": "#4169E1", "id": 62860, "label": "Dima", "shape": "dot", "title": "Dima Sitnikov"}, {"color": "#4169E1", "id": 65864, "label": "Pavel", "shape": "dot", "title": "Pavel Kolinko"}, {"color": "#FFB6C1", "id": 67321, "label": "Evgeny", "shape": "dot", "title": "Evgeny Khomenko"}, {"color": "#FFB6C1", "id": 74183, "label": "Vera", "shape": "dot", "title": "Vera Yarovinskaya"}, {"color": "#4169E1", "id": 76706, "label": "Sergey", "shape": "dot", "title": "Sergey Maklakov"}, {"color": "#FFB6C1", "id": 78486, "label": "Galina", "shape": "dot", "title": "Galina Sosnovskikh"}, {"color": "#4169E1", "id": 79327, "label": "Ivan", "shape": "dot", "title": "Ivan Krasnorudsky"}, {"color": "#4169E1", "id": 83816, "label": "Yury", "shape": "dot", "title": "Yury Mashkov"}]);
-                  edges = new vis.DataSet([{"color": "black", "from": 1, "to": 4041}, {"color": "black", "from": 1, "to": 9699}, {"color": "black", "from": 2, "to": 15598}, {"color": "black", "from": 1, "to": 24460}, {"color": "black", "from": 1, "to": 25887}, {"color": "black", "from": 1, "to": 29432}, {"color": "black", "from": 3, "to": 33977}, {"color": "black", "from": 4, "to": 35578}, {"color": "black", "from": 4, "to": 45557}, {"color": "black", "from": 5, "to": 62860}, {"color": "black", "from": 6, "to": 65864}, {"color": "black", "from": 7, "to": 74183}, {"color": "black", "from": 1, "to": 76706}, {"color": "black", "from": 1, "to": 78486}, {"color": "black", "from": 4, "to": 79327}, {"color": "black", "from": 1, "to": 83816}]);
+                  nodes = new vis.DataSet([{"color": "#2c06a5", "id": 1, "label": "Tomsk", "shape": "box", "title": "Tomsk"}, {"color": "#72d7b1", "id": 2, "label": "Moscow", "shape": "box", "title": "Moscow"}, {"color": "#85fda5", "id": 3, "label": "Seversk", "shape": "box", "title": "Seversk"}, {"color": "#7a1ab4", "id": 4, "label": "Saint Petersburg", "shape": "box", "title": "Saint Petersburg"}, {"color": "#79b979", "id": 5, "label": "Birmingham", "shape": "box", "title": "Birmingham"}, {"color": "#8554fe", "id": 6, "label": "Novosibirsk", "shape": "box", "title": "Novosibirsk"}, {"color": "#a739a0", "id": 7, "label": "Omsk", "shape": "box", "title": "Omsk"}, {"color": "#4169E1", "id": 8, "label": "Maxim", "shape": "dot", "title": "Maxim Mernes"}, {"color": "#4169E1", "id": 9, "label": "Maxim", "shape": "dot", "title": "Maxim Mernes"}, {"color": "#FFB6C1", "id": 10, "label": "Maria", "shape": "dot", "title": "Maria Kuptsova"}, {"color": "#4169E1", "id": 11, "label": "Konstantin", "shape": "dot", "title": "Konstantin Semenov"}, {"color": "#4169E1", "id": 12, "label": "Denis", "shape": "dot", "title": "Denis Matyskin"}, {"color": "#FFB6C1", "id": 13, "label": "Ulyana", "shape": "dot", "title": "Ulyana Mernes"}, {"color": "#4169E1", "id": 14, "label": "Dmitry", "shape": "dot", "title": "Dmitry Sinelnik"}, {"color": "#FFB6C1", "id": 15, "label": "Katya", "shape": "dot", "title": "Katya Solovyeva"}, {"color": "#FFB6C1", "id": 16, "label": "Valeria", "shape": "dot", "title": "Valeria Lapenko"}, {"color": "#4169E1", "id": 17, "label": "Artem", "shape": "dot", "title": "Artem Afanasyev"}, {"color": "#4169E1", "id": 18, "label": "Dima", "shape": "dot", "title": "Dima Sitnikov"}, {"color": "#4169E1", "id": 19, "label": "Pavel", "shape": "dot", "title": "Pavel Kolinko"}, {"color": "#FFB6C1", "id": 20, "label": "Evgeny", "shape": "dot", "title": "Evgeny Khomenko"}, {"color": "#FFB6C1", "id": 21, "label": "Vera", "shape": "dot", "title": "Vera Yarovinskaya"}, {"color": "#4169E1", "id": 22, "label": "Sergey", "shape": "dot", "title": "Sergey Maklakov"}, {"color": "#FFB6C1", "id": 23, "label": "Galina", "shape": "dot", "title": "Galina Sosnovskikh"}, {"color": "#4169E1", "id": 24, "label": "Ivan", "shape": "dot", "title": "Ivan Krasnorudsky"}, {"color": "#4169E1", "id": 25, "label": "Yury", "shape": "dot", "title": "Yury Mashkov"}]);
+                  edges = new vis.DataSet([{"color": "black", "from": 1, "to": 8}, {"color": "black", "from": 1, "to": 9}, {"color": "black", "from": 2, "to": 10}, {"color": "black", "from": 1, "to": 11}, {"color": "black", "from": 1, "to": 12}, {"color": "black", "from": 1, "to": 13}, {"color": "black", "from": 3, "to": 14}, {"color": "black", "from": 4, "to": 15}, {"color": "black", "from": 4, "to": 16}, {"color": "black", "from": 5, "to": 18}, {"color": "black", "from": 6, "to": 19}, {"color": "black", "from": 7, "to": 21}, {"color": "black", "from": 1, "to": 22}, {"color": "black", "from": 1, "to": 23}, {"color": "black", "from": 4, "to": 24}, {"color": "black", "from": 1, "to": 25}]);
 
                   nodeColors = {};
                   allNodes = nodes.get({ returnType: "Object" });
@@ -160,6 +241,8 @@
 
                   
 
+                  
+                    network.on("selectNode", neighbourhoodHighlight);
                   
 
                   
