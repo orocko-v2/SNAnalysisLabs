@@ -39,7 +39,6 @@ def degree_visualization(G):
     fig.tight_layout()
     plt.show()
 
-#group_users_graph = Network(notebook=True, select_menu=True)
 nx_graph = nx.Graph()
 
 color_map = {
@@ -57,8 +56,6 @@ i = len(cities) + 1
 for user in users:
     user['id'] = i
     i+=1
-
-
 
 i = 1
 for city in cities:
@@ -90,14 +87,11 @@ nt = Network()
 nt.from_nx(nx_graph)
 nt.show('graph2.html', notebook=False)
 
-
-
 print('DEGREES:', nx_graph.degree)
 degree_visualization(nx_graph)
 
 isolated_nodes = list(nx.isolates(nx_graph))
 print('ISOLATED NODES:', isolated_nodes)
-
 
 degree_centrality = nx.degree_centrality(nx_graph)
 print('CENTRALITY DEGREE:', degree_centrality)
