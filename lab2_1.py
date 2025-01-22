@@ -39,7 +39,7 @@ def degree_visualization(G):
     fig.tight_layout()
     # plt.show()
 
-def lab2_2():
+def lab2_2(count):
     nx_graph = nx.Graph()
 
     color_map = {
@@ -47,7 +47,7 @@ def lab2_2():
         2: '#4169E1'
     }
 
-    data = lab1_2.doLab2('all')
+    data = lab1_2.doLab2('all', count)
     users = data[0]
     cities = data[1]
     del cities['NA']

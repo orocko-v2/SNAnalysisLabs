@@ -5,12 +5,12 @@ import info
 
 version = info.version
 
-def doLab2(return_type):
+def doLab2(return_type, count):
     print('lab1.2')
     resp = requests.get('https://api.vk.com/method/groups.getMembers',
                         params={
                             'access_token': info.service_key,
-                            'count': 50,
+                            'count': count,
                             'group_id': 'tomsk123',
                             'sort': 'id_asc',
                             'v': version

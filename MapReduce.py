@@ -1,6 +1,7 @@
 import functools
 
 import lab3
+import json
 
 def map_reduce_old(graph, start_node, walk_length, iterations):
 
@@ -23,6 +24,7 @@ def map_reduce(graph):
     return reduced
 
 def output(graph):
-    print(map_reduce(graph))
+
+    print(json.dumps(map_reduce(graph), sort_keys=True, indent=2))
 
 
